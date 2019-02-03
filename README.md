@@ -4,3 +4,5 @@ This project provides an implementation of the Udacity react native mobile-flash
 >yarn install
 ## Start
 >yarn start
+## Testing
+This project was tested with a Pixel2 XL as well as the Pixel2 XL emulator from android studio. This project has NOT been tested on any IOS platforms.
