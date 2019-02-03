@@ -60,14 +60,13 @@ class HomeScreen extends Component {
                 keyExtractor={(item) => item.id}
             />
 
-        console.log("quizzes: ", quizzes)
-        const warning = (quizzes && Object.keys(quizzes).includes(timeToString())) ? <View></View> :
-            <Text style={{fontSize:28, color: 'red'}}>You haven't taken any quizzes today</Text>
+        const quizzesToday = quizzes !== undefined ? quizzes[timeToString()] : undefined
+        const numQuizzes = (quizzesToday !== undefined) ? quizzesToday.length : 0
 
         return (
             <View style={styles.home}>
-                {warning}
                 {deckList}
+                <Text style={{fontSize: 20}}>You have completed {numQuizzes} quizzes today</Text>
             </View>
         )
 

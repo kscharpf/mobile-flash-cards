@@ -1,11 +1,12 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet, View } from 'react-native'
+import { Platform, StatusBar, View } from 'react-native'
 import HomeScreen from './screens/HomeScreen'
 import DeckScreen from './screens/DeckScreen'
 import AddDeckScreen from './screens/AddDeckScreen'
 import AddQuizCard from './screens/AddQuizCard'
 import QuestionScreen from './screens/QuestionScreen'
 import QuizEndScreen from './screens/QuizEndScreen'
+import NotificationTest from './screens/NotificationTest'
 import {
     createAppContainer,
     createBottomTabNavigator,
@@ -17,6 +18,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { purple, white } from './utils/colors'
 import { Constants } from 'expo'
+import { setLocalNotification } from './utils/helpers'
 
 
 function UdaciStatusBar({backgroundColor, ...props}) {
@@ -40,6 +42,12 @@ const RouteConfigs = {
             tabBarLabel: "Add Deck",
         }
     },
+    Notification: {
+        screen: NotificationTest,
+        navigationOptions: {
+            tabBarLabel: "Notification Test",
+        }
+    }
 }
 
 const TabNavigatorConfig = {
@@ -58,7 +66,8 @@ const TabNavigatorConfig = {
             },
             shadowRadius: 6,
             shadowOpacity: 1
-        }
+        },
+        animationEnabled: true,
     }
 }
 
@@ -98,6 +107,10 @@ const MainNavigator = createStackNavigator({
 const Main = createAppContainer(MainNavigator)
 
 export default class App extends React.Component {
+    componentDidMount() {
+        setLocalNotification()
+    }
+
     render() {
         return (
             <Provider store={createStore(reducer)}>

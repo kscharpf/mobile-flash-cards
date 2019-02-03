@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native'
 import TextButton from '../components/TextButton'
 import { saveQuizData} from '../utils/api'
 import { connect } from 'react-redux'
-import { timeToString } from '../utils/helpers'
+import { clearLocalNotification, setLocalNotification, timeToString } from '../utils/helpers'
 import { handleSaveQuiz} from '../actions'
 
 class QuestionScreen extends Component {
@@ -28,6 +28,9 @@ class QuestionScreen extends Component {
                 totalQuestions: this.props.totalQuestions,
             }
             saveQuizData(ts, qd)
+
+            clearLocalNotification()
+                .then(setLocalNotification)
             this.props.dispatch(handleSaveQuiz(ts, qd))
             this.props.navigation.push('QuizEnd',
                 {correctAnswers: newCorrectAnswers,

@@ -28,6 +28,7 @@ class QuizEndScreen extends Component {
 
         const {title, totalQuestions, navigation} = this.props
         const {correctAnswers} = navigation.state.params
+
         return (
             <View style={{flex: 1}}>
                 <View style={styles.viewStyle}>

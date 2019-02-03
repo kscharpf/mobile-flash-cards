@@ -27,7 +27,8 @@ class AddDeckScreen extends Component {
         saveDeck({key: deck.id, entry: deck})
 
         this.setState({text: ''})
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('Deck',
+            {entryId: deck.id})
     }
 
     render() {
