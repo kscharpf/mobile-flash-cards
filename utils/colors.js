@@ -1,4 +1,5 @@
 // utils/colors.js
+// colors provided in example UdaciFitness problem
 
 export const purple = '#292477'
 export const gray = '#757575'
