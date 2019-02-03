@@ -5,13 +5,14 @@ function deck(state = {}, action) {
 
         case SAVE_QUIZ:
             const currentQuizzes = state.quizzes[action.date] || []
-            return {
+            return { 
                 ...state,
                 quizzes: {
                     ...state.quizzes,
-                    [action.date]: [currentQuizzes, action.quiz],
+                    [action.date]: [...currentQuizzes, action.quiz],
                 }
             }
+
         case ADD_CARD:
             return {
                 ...state,
